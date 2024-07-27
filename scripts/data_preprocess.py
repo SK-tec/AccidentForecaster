@@ -1,17 +1,21 @@
 import pandas as pd 
 
 #Load the dataset
-traffic_accidents_df=pd.read_csv('data/monatszahlen2405_verkehrsunfaelle_export.csv')
+traffic_data=pd.read_csv('data/monatszahlen2405_verkehrsunfaelle_export.csv')
 # Select most relevant columns
-traffic_accidents_df=traffic_accidents_df[['MONATSZAHL','AUSPRAEGUNG','JAHR','MONAT','WERT']]
+traffic_data=traffic_data[['MONATSZAHL','AUSPRAEGUNG','JAHR','MONAT','WERT']]
 # Drop the records which come after 2020
-traffic_accidents_df=traffic_accidents_df[traffic_accidents_df['JAHR']<=2020]
+traffic_data=traffic_data[traffic_data['JAHR']<=2020]
 #check for null value
-print(traffic_accidents_df.isnull().any())
+print(traffic_data.isnull().any())
 #Fill null values with 0
-traffic_accidents_df['WERT']=traffic_accidents_df['WERT'].fillna(0)
-# Check for null values again
-print("Null values after handling:")
-print(traffic_accidents_df.isnull().sum())
+traffic_data['WERT']=traffic_data['WERT'].fillna(0)
+
+# Drop the rows which contains the Summe in JAHR 
+traffic_data=traffic_data[traffic_data['AUSPRAEG']!='Summe']
+
+
+
+print(traffic_data.isnull().sum())
 # Save preprocessed data
-traffic_accidents_df.to_csv('data/processed_data.csv',index=False)
+traffic_data.to_csv('data/processed_data.csv',index=False)
