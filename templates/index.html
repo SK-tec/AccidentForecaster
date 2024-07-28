@@ -25,6 +25,7 @@
               class="form-control"
               id="inputYear"
               placeholder="Please Enter year"
+              name="year"
               required
             />
           </div>
@@ -33,7 +34,7 @@
             <label for="validationDefault04" class="form-label"
               >Select Month</label
             >
-            <select class="form-select" id="monthList"></select>
+            <select class="form-select" id="monthList" name="month"></select>
           </div>
 
           <button type="submit" class="btn btn-primary">Predict</button>
@@ -42,7 +43,7 @@
       <div class="container col-6 mt-3 border border-warning"">
         {% if prediction %}
         <h2 class="d-flex justify-content-center">
-          Prediction: {{ prediction }}
+        {{ prediction|safe }}
         </h2>
         {% endif %}
       </div>
