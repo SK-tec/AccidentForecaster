@@ -41,5 +41,5 @@ merged_df.dropna(subset=['y'], inplace=True)
 mae = mean_absolute_error(merged_df['y'], merged_df['yhat'])
 rmse = np.sqrt(mean_squared_error(merged_df['y'], merged_df['yhat']))
 
-print(f'Mean Absolute Error (MAE): {mae: .6f}')
-print(f'Root Mean Squared Error (RMSE): {rmse: .6f}')
+print(f'Mean Absolute Error (MAE): {mae: .2f}')
+print(f'Root Mean Squared Error (RMSE): {rmse: .2f}')

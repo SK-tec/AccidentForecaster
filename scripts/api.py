@@ -40,7 +40,7 @@ def predict():
         forecast = model.predict(future_df)
         prediction = int(forecast['yhat'].iloc[0])
         # Replace with your prediction logic
-        prediction = f"Accident's Prediction: <br> Year: {year} <br> Month: {calendar.month_name[int(month)]} <br> Value: {prediction}"
+        prediction = f"Accident's Prediction <br> Year: {year} <br> Month: {calendar.month_name[int(month)]} <br> Value: {prediction}"
         print(prediction)
         # Render HTML template with the prediction result
         return render_template('index.html', prediction=prediction)
