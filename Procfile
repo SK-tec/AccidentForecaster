@@ -1,2 +1,3 @@
 # Procfile
-web: python scripts/api.py
+web: gunicorn scripts.api:app
+
