@@ -1,32 +1,3 @@
-# from flask import Flask, request, render_template
-# import pandas as pd
-# import pickle
-
-# app = Flask(__name__)
-
-# # Load the model
-# with open('model/prophet_model.pkl', 'rb') as f:
-#     model = pickle.load(f)
-
-# @app.route('/',methods=['GET'])
-# def Home():
-#     return render_template('index.html',prediction="prediction" )
-
-# # @app.route('/predict', methods=['POST'])
-# # def predict():
-# #     year = request.form['year']
-# #     month = request.form['month']
-    
-# #     # Generate forecast for the specified year and month
-# #     future_date = pd.to_datetime(f'{year}-{month}-01')
-# #     future_df = pd.DataFrame({'ds': [future_date]})
-# #     forecast = model.predict(future_df)
-# #     prediction = forecast['yhat'].iloc[0]
-    
-# #     return render_template('index.html', prediction=prediction)
-
-# if __name__ == '__main__':
-#     app.run(debug=True)
 from flask import Flask, request,jsonify, render_template
 import pandas as pd
 import pickle
@@ -43,20 +14,7 @@ with open(model_path, 'rb') as f:
 def Home():
     return render_template('index.html')
 @app.route('/predict', methods=['POST'])
-# def predict():
-#     year = request.form['year']
-#     month = request.form['month']
-    
-#     # Generate forecast for the specified year and month
-#     future_date = pd.to_datetime(f'{year}-{month}-01')
-#     future_df = pd.DataFrame({'ds': [future_date]})
-#     forecast = model.predict(future_df)
-#     prediction = int(forecast['yhat'].iloc[0])
-    
-#     print(prediction)
-    
-#     return jsonify({'prediction': prediction})
-#     #return render_template('index.html', prediction=prediction)
+
 def predict():
     if request.content_type == 'application/json':
         data = request.get_json()
